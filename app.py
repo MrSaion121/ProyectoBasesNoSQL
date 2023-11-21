@@ -22,7 +22,7 @@ REPLICATION_FACTOR = os.getenv('CASSANDRA_REPLICATION_FACTOR', '1')
 
 def print_menu():
     mm_options = {
-        1: "Show accounts",
+        1: "Get the airports with the longest average wait time in a five year range",
         2: "Show positions",
         3: "Show trade history",
         4: "Change username",
@@ -70,7 +70,8 @@ def main():
         print_menu()
         option = int(input('Enter your choice: '))
         if option == 1:
-            model.get_user_accounts(session, username)
+            yearMax = int(input('Enter the year limit you wish to check: '))
+            model.flights_by_year(session, yearMax)
         if option == 2:
             pass
         if option == 3:
