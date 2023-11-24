@@ -23,30 +23,12 @@ REPLICATION_FACTOR = os.getenv('CASSANDRA_REPLICATION_FACTOR', '1')
 def print_menu():
     mm_options = {
         1: "Get the airports with the longest average wait time in a five year range",
-        2: "Show positions",
+        2: "Get the months with the most flights in a year, as well as the most use transit method",
         3: "Show trade history",
-        4: "Change username",
-        5: "Exit",
+        4: "Exit",
     }
     for key in mm_options.keys():
         print(key, '--', mm_options[key])
-
-
-def print_trade_history_menu():
-    thm_options = {
-        1: "All",
-        2: "Date Range",
-        3: "Transaction Type (Buy/Sell)",
-        4: "Instrument Symbol",
-    }
-    for key in thm_options.keys():
-        print('    ', key, '--', thm_options[key])
-
-
-def set_username():
-    username = input('**** Username to use app: ')
-    log.info(f"Username set to {username}")
-    return username
 
 
 def get_instrument_value(instrument):
@@ -64,8 +46,6 @@ def main():
 
     model.create_schema(session)
 
-    username = set_username()
-
     while(True):
         print_menu()
         option = int(input('Enter your choice: '))
@@ -73,13 +53,13 @@ def main():
             yearMax = int(input('Enter the year limit you wish to check: '))
             model.flights_by_year(session, yearMax)
         if option == 2:
-            pass
+            year = int(input('Enter the year you wish to check: '))
+            model.flights_by_months(session, year)
         if option == 3:
-            print_trade_history_menu()
-            tv_option = int(input('Enter your trade view choice: '))
+            # print_trade_history_menu()
+            # tv_option = int(input('Enter your trade view choice: '))
+            pass
         if option == 4:
-            username = set_username()
-        if option == 5:
             exit(0)
 
 
