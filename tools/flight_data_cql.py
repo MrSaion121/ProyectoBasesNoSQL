@@ -29,9 +29,9 @@ def random_date(start_date, end_date):
 
 
 def generate_dataset_cql(output_file, rows):
-    fy_stmt = "INSERT INTO flights_by_year (airline, from_, to, day, month, year, connection, wait) VALUES ('{}', '{}', '{}', {}, {}, {}, {}, {});"
-    fm_stmt = "INSERT INTO flights_by_month (airline, from_, to, day, month, year, connection, wait) VALUES ('{}', '{}', '{}', {}, {}, {}, {}, {});"
-    cl_stmt = "INSERT INTO client (age, gender, reason, stay, transit) VALUES({}, '{}', '{}', '{}', '{}', );"
+    fy_stmt = "INSERT INTO flights_by_year (airline, from_, to_, day, month, year, connection, wait) VALUES ('{}', '{}', '{}', {}, {}, {}, {}, {});"
+    fm_stmt = "INSERT INTO flights_by_month (airline, from_, to_, day, month, year, connection, wait) VALUES ('{}', '{}', '{}', {}, {}, {}, {}, {});"
+    cl_stmt = "INSERT INTO client (age, gender, reason, stay, transit) VALUES({}, '{}', '{}', '{}', '{}');"
     with open(output_file, "w") as fd:
         for i in range(rows):
             from_airport = choice(airports)
@@ -47,7 +47,7 @@ def generate_dataset_cql(output_file, rows):
             if not connection:
                wait = 0
             else:
-                transit = ""
+                transit = "None"
             if reason == "Back Home":
                 stay = "Home"
                 connection = False
