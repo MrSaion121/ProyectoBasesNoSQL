@@ -44,6 +44,7 @@ class passenger(BaseModel):
     gender: str = Field(...)
     reason: str = Field(...)
     transit: str = Field(...)
+    stay: str =  Field(...)
 
     class Config:
         populate_by_name = True
@@ -54,15 +55,22 @@ class passenger(BaseModel):
                 "age": 22,
                 "gender": "male",
                 "reason": "On vacation/Pleasure",
-                "transit": "Pickup"
+                "transit": "Pickup",
+                "stay":"Hotel"
             }
         }
         
 
 class transport(BaseModel):
+
     id: str = Field(default_factory = uuid.uuid4)
     Name: str = Field(...)
     N_uses: int = Field(...)
+
+    def __init__(self,Name,N_uses):
+        self.Name = Name
+        self.N_uses = N_uses
+    
     class Config:
         populate_by_name = True
         json_schema_extra ={
