@@ -1,0 +1,1 @@
+[{'dgraph.type': 'scale', 'uid': '_:S20', 'location': 'JFK', 'avg_wait': 0}, {'dgraph.type': 'scale', 'uid': '_:S20', 'location': 'PDX', 'avg_wait': 0}, {'dgraph.type': 'scale', 'uid': '_:S12', 'location': 'GDL', 'avg_wait': 0}, {'dgraph.type': 'scale', 'uid': '_:S27', 'location': 'SJC', 'avg_wait': 0}, {'dgraph.type': 'scale', 'uid': '_:S9', 'location': 'LAX', 'avg_wait': 0}]

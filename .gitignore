@@ -1,2 +1,8 @@
 Mongo/venv
 Mongo/__pycache__
+flight_passengers.csv
+Mongo/flight.txt
+Mongo/passengers.txt
+Mongo/scales.txt
+Mongo/transit.txt
+__pycache__
