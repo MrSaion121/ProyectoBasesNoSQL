@@ -9,7 +9,7 @@ df = pd.read_csv('../flight_passengers.csv',sep=',')
 
 
 transits =df.transit.unique()
-flightsData = df[["airline","from","to","day","month","year","connection"]]
+flightsData = df[["airline","from","to","day","month","year","connection","wait"]]
 
 scaleData = df[["to","wait","connection"]] #delete where connection is false
 scaleData = scaleData[scaleData.connection == True ]
@@ -29,7 +29,8 @@ def flight_data(data):
                     "Ffrom": row["from"],
                     "Fto": row["to"],
                     "date": date,
-                    "connection": row["connection"]
+                    "connection": row["connection"],
+                    "wait":row["wait"]
 
         }
         fdata.append(flight)
@@ -61,7 +62,7 @@ def passenger_data(data):
             "age":row["age"],
             "gender":row["gender"],
             "reason":row["reason"],
-            "transit":row["transit"],
+            "transit":str(row["transit"]),
             "stay":row["stay"]
         }
    
@@ -78,7 +79,7 @@ def transits_data(data):
         
         transit = {
              
-                "Name":dt,
+                "Name":str(dt),
                 "N_uses":0
         }
 
